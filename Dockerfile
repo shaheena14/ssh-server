@@ -22,5 +22,4 @@ COPY sshd_config /etc/ssh/sshd_config
 EXPOSE 22
 
 # Last is the actual command to start up ssh-server within our Container
-ENTRYPOINT ["ssh-start"]
-CMD ["ssh-server"]
+ENTRYPOINT /usr/bin/ssh-keygen -A && /usr/sbin/sshd -D -e "$@"
